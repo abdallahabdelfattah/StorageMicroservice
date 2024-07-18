@@ -21,9 +21,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Storage.Infrastructure", "S
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution items", "solution items", "{D199D2F0-AE24-4FBA-8F36-661064350715}"
 	ProjectSection(SolutionItems) = preProject
-		1.txt = 1.txt
-		Storage Microservice Design Document.docx = Storage Microservice Design Document.docx
 		..\..\..\Desktop\digrame.png = ..\..\..\Desktop\digrame.png
+		Storage Microservice Design Document.docx = Storage Microservice Design Document.docx
+		document.txt = document.txt
 	EndProjectSection
 EndProject
 Global
