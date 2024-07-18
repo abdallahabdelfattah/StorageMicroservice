@@ -1,0 +1,93 @@
+﻿Storage Microservice Design Document
+
+1) Function and Nonfunctional Requirements
+Functional Requirements:
+•	File Storage:
+o	Store files of any extension securely.
+o	Support operations like upload, download, and delete.
+•	Access Control:  
+o	Implement authentication and authorization mechanisms to control access.
+•	Scalability:
+o	Scale horizontally to handle increasing file storage needs.
+•	Fault Tolerance:
+o	Ensure high availability and resilience against failures.
+•	Monitoring and Logging:
+o	Provide monitoring metrics and logging for operations.
+Nonfunctional Requirements:
+•	Performance:
+o	Response time for file operations should be optimized.
+•	Security:
+o	Encrypt files at rest and in transit to maintain data confidentiality.
+•	Compliance:
+o	Adhere to regulatory compliance requirements for data storage.
+•	Integration:
+o	Easily integrate with other microservices and applications.
+•	Documentation:
+o	Comprehensive documentation for API usage and system architecture.
+
+
+ 
+2) High-Level Design
+Components:
+•	API Gateway: Routes requests to appropriate services.
+•	Storage Service: Handles file storage operations.
+•	Authentication Service: Manages user authentication and authorization. Not implemented in this phase 
+Architecture:
+•	Microservices Architecture: Uses a modular approach for scalability and flexibility.
+•	RESTful API: Exposes endpoints for file operations.
+•	Event-Driven Architecture: Publishes events for file upload, download, and deletion.
+
+
+
+
+ 
+3) Low-Level Design
+Storage Types:
+
+Local Storage
+•	Description:
+o	Files are stored on the local file system of the microservice server.
+o	Suitable for small-scale deployments or when direct access to files is needed.
+•	Pros:
+o	Simple setup and management.
+o	Direct access to files without network latency.
+•	Cons:
+o	Limited scalability compared to cloud storage.
+o	Risk of data loss if server fails or disk malfunctions.
+Azure Blob Storage
+•	Description:
+o	Scalable cloud storage solution provided by Microsoft Azure.
+o	Stores unstructured data as files share accessible via URLs.
+•	Reason for Choosing:
+o	Highly scalable, durable, and available.
+o	Integrated with Azure ecosystem, supports global distribution and CDN.
+File Operations
+•	Upload File:
+o	Client sends file to API Gateway.
+o	Gateway routes request to Storage Service.
+o	Service saves file to chosen storage depend on configuration (local or Azure Storage), returns file metadata.
+•	Download File:
+o	Client requests file by name.
+o	Gateway forwards request to Storage Service.
+o	Service retrieves file from chosen storage, streams it to client.
+•	Delete File:
+o	Client requests file deletion.
+o	Gateway routes request to Storage Service.
+o	Service deletes file from chosen storage.
+
+
+
+
+
+4) Communication with Other Microservices
+API Gateway (Ocelot):
+•	Routes requests from other microservices to appropriate endpoints.
+•	Manages API requests and responses, handles authentication and authorization.
+Example Flow:
+•	Microservice A needs to upload a file:
+1.	Microservice A sends a POST request to /storage/upload via API Gateway.
+2.	API Gateway forwards request to Storage Microservice.
+3.	Storage Microservice saves file to Azure Storage.
+4.	Storage Microservice returns file metadata to Microservice A.
+
+ 
