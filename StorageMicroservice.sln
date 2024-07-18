@@ -22,6 +22,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution items", "solution items", "{D199D2F0-AE24-4FBA-8F36-661064350715}"
 	ProjectSection(SolutionItems) = preProject
 		..\..\..\Desktop\digrame.png = ..\..\..\Desktop\digrame.png
+		digrame.png = digrame.png
 		Storage Microservice Design Document.docx = Storage Microservice Design Document.docx
 		document.txt = document.txt
 	EndProjectSection
